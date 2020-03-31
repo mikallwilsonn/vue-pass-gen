@@ -5,6 +5,10 @@
           Password Generator
         </h2>
 
+        <h3>
+          Created by <a href="https://github.com/mikallwilsonn" target="_blank" rel="noopener noreferrer">Michael R. Wilson</a>
+        </h3>
+
         <div class="result-container">
             <span id="result">
               {{ passwordGenerated }}
@@ -14,6 +18,7 @@
               class="btn" 
               id="clipboard"
               @click.stop="copyToClipboard"
+              disabled="true"
             >
                 <ClipboardSVG />
             </button>
@@ -22,7 +27,7 @@
         <div class="settings">
             <div class="setting">
                 <label>
-                  Password length
+                  Password Length <small>( default/max 20 )</small>
                 </label>
 
                 <input 
@@ -36,7 +41,7 @@
 
             <div class="setting">
                 <label>
-                  Include uppercase letters
+                  Include Uppercase Letters?
                 </label> 
 
                 <input 
@@ -48,7 +53,7 @@
 
             <div class="setting">
                 <label>
-                  Include lowercase letters
+                  Include Lowercase Letters?
                 </label> 
 
                 <input 
@@ -60,7 +65,7 @@
 
             <div class="setting">
                 <label>
-                  Include numbers
+                  Include Numbers?
                 </label> 
 
                 <input 
@@ -72,7 +77,7 @@
 
             <div class="setting">
                 <label>
-                  Include symbols
+                  Include Symbols?
                 </label> 
 
                 <input 
@@ -90,7 +95,7 @@
           id="GenerateButton"
           @click.stop="initGenerate"
         >
-            Generate password
+            {{ generateButtonText }}
         </button>
     </div>
   </div>
@@ -105,7 +110,8 @@ export default {
     ClipboardSVG
   },
   data: () => ({
-    passwordGenerated: ''
+    passwordGenerated: '',
+    generateButtonText: 'Generate Password'
   }),
   methods: {
     initGenerate() {
@@ -153,6 +159,14 @@ export default {
           });
       }
 
+      const clipboardBTN = document.querySelector( '#clipboard' );
+      if ( !clipboardBTN.classList.contains( 'show' ) ) {
+        clipboardBTN.classList.add( 'show' );
+        clipboardBTN.disabled = false;
+      }
+
+      this.generateButtonText = 'Generate Another Password'
+
       return this.passwordGenerated = password.slice( 0, length );
     },
     getRandomLower() {
@@ -198,109 +212,4 @@ export default {
 </script>
 
 <style>
-@import url( 'https://fonts.googleapis.com/css?family=Muli&display=swap' );
-
-* { box-sizing: border-box; }
-
-body {
-	background: #00b09b;  
-	background: linear-gradient( to right, #96c93d, #00b09b ); 
-	
-	color: #fff;
-	display: flex;
-	font-family: 'Muli', sans-serif;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	padding: 10px;
-	min-height: 100vh;
-}
-
-p { margin: 5px 0; }
-
-h2 {
-	margin: 10px 0 20px;
-	text-align: center;
-	font-size: 3rem;
-}
-
-input[ type=checkbox ] { margin-right: 0; }
-
-.container {
-	background-color: #0072ff;
-	box-shadow: 0px 2px 10px rgba( 255, 255, 255, 0.2 );
-	padding: 50px;
-	width: 500px;
-	max-width: 100%;
-	border-radius: 5px;
-	box-shadow: 0px 0px 25px 5px rgba( 0, 0, 0, 0.25 );
-}
-
-.result-container {
-	background-color: rgba(0, 0, 0, 0.4);
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	position: relative;
-	font-size: 18px;
-	letter-spacing: 1px;
-	padding: 12px 10px;
-	height: 50px;
-	width: 100%;
-}
-
-.result-container #result {
-  word-wrap: break-word;
-	max-width: calc( 100% - 40px );
-}
-
-.result-container .btn {
-	font-size: 20px;
-	position: absolute;
-	top: 5px;
-	right: 5px;
-	height: 40px;
-	width: 40px;
-}
-
-.btn {
-	border: none;
-	color: #fff;
-	cursor: pointer;
-	font-size: 16px;
-	padding: 8px 12px;
-	background-color: #0072ff;
-}
-
-.btn-large {
-	display: block;
-	width: 100%;
-}
-
-.setting {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 15px 0;
-}
-
-label { font-size: 1.2rem; }
-
-button#GenerateButton {
-	margin-top: 5px;
-	font-size: 1.25rem;
-	background: rgba( 0, 0, 0, 0.75 );
-	padding: 15px;
-	border-radius: 5px;
-	transition: 0.3s;
-}
-
-.btn:hover { transform: scale( 1.025 ); }
-
-input[ type=number ] { font-size: 1.2rem; }
-
-@media screen and ( max-width: 400px ) {
-	.result-container { font-size: 14px; }
-}
-
 </style>
