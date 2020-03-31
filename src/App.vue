@@ -183,7 +183,15 @@ export default {
       textarea.select();
       document.execCommand( 'copy' );
       textarea.remove();
-      alert( 'Password copied to clipboard.' );
+      // alert( 'Password copied to clipboard.' );
+      this.$toasted.show( 
+        'Password copied to clipboard', 
+        {
+          theme: 'toasted-primary',
+          position: 'top-right',
+          duration: 3000
+        }
+      )
     }
   }
 }
