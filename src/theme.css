@@ -69,8 +69,8 @@ input[ type=checkbox ]:hover { cursor: pointer; }
 }
 
 .result-container #result {
-  word-wrap: break-word;
-	max-width: calc( 100% - 40px );
+    word-wrap: break-word;
+    max-width: calc( 100% - 40px );
 }
 
 .result-container .btn {
@@ -96,18 +96,19 @@ input[ type=checkbox ]:hover { cursor: pointer; }
 	width: 100%;
 }
 
-.settings {
-    margin-top: 2rem;
-}
+.settings { margin-top: 2rem; }
 
 .setting {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin: 15px 0;
+    margin: 15px 0;
+    border-bottom: 1px solid rgba( 255, 255, 255, 0.25 );
+    padding-bottom: 1rem;
 }
 
 label { font-size: 1.2rem; }
+label small { opacity: 0.85; }
 
 button#GenerateButton {
 	margin-top: 1rem;
@@ -123,7 +124,8 @@ button#GenerateButton {
 input[ type=number ] { 
     font-size: 1.2rem;
     background-color: rgba( 0, 0, 0, 0.4 );
-    border-color: rgba( 0, 0, 0, 0.45 );
+    border: 2px solid rgba( 10, 10, 10, 0.25 );
+    border-radius: 3px;
     color: #FFF;
     padding: 0.25rem;
     text-align: right;
@@ -134,14 +136,16 @@ input[ type=number ] {
 .show { opacity: 1 !important;  }
 button[ disabled="disabled" ]:hover { cursor: default; }
 
+
+/* -- */
 @media screen and ( max-width: 400px ) {
 	.result-container { font-size: 14px; }
 }
 
+
+/* -- */
 @media screen and ( max-width: 575.98px ) {
-    body {
-        overflow: scroll;
-    }
+    body { overflow: scroll; }
 
     #app, body {
         margin: 0;
@@ -162,7 +166,7 @@ button[ disabled="disabled" ]:hover { cursor: default; }
 	.container { 
         border-radius: 0;
         margin:auto;
-        padding: 2rem;
+        padding: 1.5rem;
 
     }
 }

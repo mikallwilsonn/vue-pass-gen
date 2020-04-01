@@ -160,12 +160,12 @@ export default {
       }
 
       const clipboardBTN = document.querySelector( '#clipboard' );
-      if ( !clipboardBTN.classList.contains( 'show' ) ) {
+      if ( !clipboardBTN.classList.contains( 'show' )) {
         clipboardBTN.classList.add( 'show' );
         clipboardBTN.disabled = false;
       }
 
-      this.generateButtonText = 'Generate Another Password'
+      this.generateButtonText = 'Generate Another Password';
 
       return this.passwordGenerated = password.slice( 0, length );
     },
@@ -197,7 +197,7 @@ export default {
       textarea.select();
       document.execCommand( 'copy' );
       textarea.remove();
-      // alert( 'Password copied to clipboard.' );
+      
       this.$toasted.show( 
         'Password copied to clipboard', 
         {
