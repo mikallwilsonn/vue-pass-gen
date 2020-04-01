@@ -1,24 +1,6 @@
 # vue-pass-gen
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### A review / practice Password Generator application built with Vue.js  
+  
+  
+This application allows you to very quickly generate a random alphanumeric string to use as passwords. 

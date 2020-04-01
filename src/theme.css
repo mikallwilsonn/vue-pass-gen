@@ -1,3 +1,7 @@
+/* 
+--- vue-pass-gen styles
+*/
+
 @import url( 'https://fonts.googleapis.com/css?family=Muli&display=swap' );
 
 * { box-sizing: border-box; }
@@ -136,6 +140,10 @@ input[ type=number ] {
 .show { opacity: 1 !important;  }
 button[ disabled="disabled" ]:hover { cursor: default; }
 
+
+/*
+---- Responsive media queries
+*/
 
 /* -- */
 @media screen and ( max-width: 400px ) {

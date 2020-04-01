@@ -114,6 +114,7 @@ export default {
     generateButtonText: 'Generate Password'
   }),
   methods: {
+    // Initialize the password generation
     initGenerate() {
       const resultEl = document.querySelector( '#result' );
       const lengthEl = document.querySelector( '#length' );
@@ -121,9 +122,7 @@ export default {
       const lowercaseEl = document.querySelector( '#lowercase' );
       const numbersEl = document.querySelector( '#numbers' );
       const symbolsEl = document.querySelector( '#symbols' );
-
       const length = +lengthEl.value;
-
       const hasLower = lowercaseEl.checked;
       const hasUpper = uppercaseEl.checked;
       const hasNumber = numbersEl.checked;
@@ -131,9 +130,9 @@ export default {
 
       resultEl.innerText = this.generatePassword( hasLower, hasUpper, hasNumber, hasSymbol, length );
     },
+    // Generate the password and return it for display on page
     generatePassword( lower, upper, number, symbol, length ) {
       let password = '';
-
       const typesCount = lower + upper + number + symbol;
 
       const typesArray = [ {lower}, {upper}, {number}, {symbol} ]
@@ -160,6 +159,7 @@ export default {
       }
 
       const clipboardBTN = document.querySelector( '#clipboard' );
+
       if ( !clipboardBTN.classList.contains( 'show' )) {
         clipboardBTN.classList.add( 'show' );
         clipboardBTN.disabled = false;
@@ -169,20 +169,25 @@ export default {
 
       return this.passwordGenerated = password.slice( 0, length );
     },
+    // Get a random lowercase letter
     getRandomLower() {
       return String.fromCharCode( Math.floor( Math.random() * 26 ) + 97 );
     },
+    // Get a random capital/uppercase letter
     getRandomUpper() {
       return String.fromCharCode( Math.floor( Math.random() * 26 ) + 65 );
     },
+    // Get a random number 
     getRandomNumber() {
       return String.fromCharCode( Math.floor( Math.random() * 10 ) + 48 );
     },
+    // Get a random string from a specific set of valid characters
     getRandomSymbol() {
       const symbols = "!@#$%^&*(){}[]=/,.";
 
       return symbols[ Math.floor( Math.random() * symbols.length )];
     },
+    // Copy the generated password to the users clipboard
     copyToClipboard() {
       const resultEl = document.querySelector( '#result' );
       const textarea = document.createElement( 'textarea' );
@@ -210,6 +215,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>
